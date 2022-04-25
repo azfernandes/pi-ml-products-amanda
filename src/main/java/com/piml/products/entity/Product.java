@@ -1,4 +1,4 @@
-package entity;
+package com.piml.products.entity;
 
 import lombok.*;
 
@@ -14,7 +14,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productId")
+    @Column(name = "product_id")
     private long id;
 
     private String name;

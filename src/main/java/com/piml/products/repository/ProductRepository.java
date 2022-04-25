@@ -1,6 +1,7 @@
-package repository;
+package com.piml.products.repository;
 
-import entity.Product;
+
+import com.piml.products.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
