@@ -1,7 +1,7 @@
 package com.piml.products.entity;
 
 import lombok.*;
-
+import lombok.Builder;
 import javax.persistence.*;
 
 @Getter

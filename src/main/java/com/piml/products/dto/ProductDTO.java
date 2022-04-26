@@ -1,6 +1,6 @@
 package com.piml.products.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.piml.products.entity.Product;
 import lombok.*;
 
 @Getter
@@ -9,18 +9,18 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
-    @JsonProperty("name")
+
     private String name;
-    @JsonProperty("description")
     private String description;
-    @JsonProperty("minimumTemperature")
     private Double minimumTemperature;
-    @JsonProperty("size")
     private Double size;
-    @JsonProperty("sellerId")
     private Long sellerId;
-    @JsonProperty("category")
     private String category;
+
+    public Product map() {
+        return Product.builder().name(this.name).description(this.description).minimumTemperature(this.minimumTemperature).size(this.size).sellerId(this.sellerId).category(this.category).build();
+    }
+
 
     @Override
     public String toString() {
