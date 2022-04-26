@@ -1,10 +1,12 @@
 package com.piml.products.service;
 
 import com.piml.products.entity.Product;
+import com.piml.products.exception.ProductNotFoundException;
 import com.piml.products.interfaces.CategoryENUM;
 import com.piml.products.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,17 +23,22 @@ public class ProductService {
     public Product create(Product product) {
         return productRepository.save(product);
     }
-    public Product getById(Long id) {
-        Optional<Product> foundProduct = this.productRepository.findById(id);
-        return foundProduct.orElse(new Product());
+
+    public Product getById(Long id)  {
+        return this.productRepository.getById(id);
     }
-    public List<Product> getAllProducts() {
+
+    public List<Product> getAllProducts(List<Long> productIds) {
+        if(productIds != null) {
+            return productRepository.findAllById(productIds);
+        }
         List<Product> productList = productRepository.findAll();
         if(productList == null) {
             return new ArrayList<Product>();
         }
         return productList;
     }
+
     public List<Product> getByCategory(CategoryENUM category) {
        return productRepository.findByCategory(category.getCategoryDescription());
     }

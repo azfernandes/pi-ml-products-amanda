@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping
@@ -34,8 +36,8 @@ public class ProductController {
     }
 
     @GetMapping("/fresh-products/v1")
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
-        List<Product> productList = productService.getAllProducts();
+    public ResponseEntity<List<ProductDTO>> getAllProducts(@RequestParam(name = "products", required = false) List<Long> productIds)  {
+        List<Product> productList = productService.getAllProducts(productIds);
         return ResponseEntity.ok(ProductDTO.map(productList));
     }
 
