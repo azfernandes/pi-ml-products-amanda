@@ -1,6 +1,5 @@
 package com.piml.products.entity;
 
-import com.piml.products.interfaces.CategoryENUM;
 import lombok.*;
 import lombok.Builder;
 import javax.persistence.*;
