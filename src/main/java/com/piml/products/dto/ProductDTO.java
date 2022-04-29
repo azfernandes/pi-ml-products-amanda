@@ -64,5 +64,4 @@ public class ProductDTO {
     public static List<ProductDTO> map(List<Product> productList) {
         return productList.stream().map(ProductDTO::map).collect(Collectors.toList());
     }
-
 }
