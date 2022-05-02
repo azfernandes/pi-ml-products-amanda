@@ -4,6 +4,9 @@ import com.piml.products.entity.Product;
 import com.piml.products.interfaces.CategoryENUM;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,12 +18,26 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ProductDTO {
 
+    @NotNull(message = "Name is required")
+    @NotBlank(message = "Name is required")
+    @NotEmpty(message = "Name is required")
     private String name;
+
+    @NotNull(message = "Description is required")
     private String description;
+
+    @NotNull(message = "Minimum temperature is required")
     private Double minimumTemperature;
+
+    @NotNull(message = "size is required")
     private Double size;
+
     private Long sellerId;
+
+    @NotNull(message = "price is required")
     private BigDecimal price;
+
+    @NotNull(message = "category is required")
     private CategoryENUM category;
 
     public Product map() {
@@ -47,5 +64,4 @@ public class ProductDTO {
     public static List<ProductDTO> map(List<Product> productList) {
         return productList.stream().map(ProductDTO::map).collect(Collectors.toList());
     }
-
 }
