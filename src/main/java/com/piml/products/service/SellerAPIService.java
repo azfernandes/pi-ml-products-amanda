@@ -2,7 +2,9 @@ package com.piml.products.service;
 
 import com.piml.products.dto.SellerDTO;
 import com.piml.products.exception.SellerAlreadyExistsException;
-import org.springframework.context.annotation.Bean;
+import com.piml.products.exception.handler.RestTemplateResponseErrorHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 
@@ -17,9 +19,11 @@ public class SellerAPIService {
 
     private final RestTemplate restTemplate;
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+    @Autowired
+    public SellerAPIService(RestTemplateBuilder restTemplateBuilder) {
+        restTemplate = restTemplateBuilder
+                .errorHandler(new RestTemplateResponseErrorHandler())
+                .build();
     }
 
     public SellerAPIService(@Lazy RestTemplate restTemplate) {
