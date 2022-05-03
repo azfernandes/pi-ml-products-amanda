@@ -14,7 +14,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://dbproducts:5432/product
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
   dbproducts:
     image: 'postgres'
