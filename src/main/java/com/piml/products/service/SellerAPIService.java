@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class SellerAPIService {
-    private static final String PRODUCT_API_URI = "http://localhost:8080";
+    private static final String PRODUCT_API_URI = "http://gandalf:8080";
     private static final String PRODUCTS_RESOURCE = "/user/v1";
 
     private final RestTemplate restTemplate;
