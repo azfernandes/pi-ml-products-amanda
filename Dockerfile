@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11
 MAINTAINER group9
 VOLUME /tmp
 EXPOSE 8081
