@@ -1,5 +1,6 @@
 package com.piml.products.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.piml.products.entity.Product;
 import com.piml.products.interfaces.CategoryENUM;
 import lombok.*;
@@ -17,6 +18,9 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
 
     @NotNull(message = "Name is required")
     @NotBlank(message = "Name is required")
@@ -53,6 +57,7 @@ public class ProductDTO {
     public static ProductDTO map(Product product) {
         return ProductDTO.builder()
                 .name(product.getName())
+                .id(product.getId())
                 .description(product.getDescription())
                 .minimumTemperature(product.getMinimumTemperature())
                 .size(product.getSize())
