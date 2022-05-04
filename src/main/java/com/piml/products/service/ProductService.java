@@ -5,8 +5,12 @@ import com.piml.products.interfaces.CategoryENUM;
 import com.piml.products.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ProductService {
@@ -39,4 +43,9 @@ public class ProductService {
     public List<Product> getByCategory(CategoryENUM category) {
        return productRepository.findByCategory(category.getCategoryDescription());
     }
+
+    public List<Product> findByPriceLessThanEqual(BigDecimal price){
+        return productRepository.findByPriceLessThanEqual(price).stream().sorted(Comparator.comparing(Product::getPrice)).collect(Collectors.toList());
+    }
+
 }

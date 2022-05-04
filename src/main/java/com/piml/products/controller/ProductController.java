@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -45,4 +46,11 @@ public class ProductController {
         List<Product> productList = productService.getByCategory(category);
         return ResponseEntity.ok(ProductDTO.map(productList));
     }
+
+    @GetMapping("api/v1/fresh-products/price")
+    public ResponseEntity<List<ProductDTO>> findByPriceLessThanEqual(@RequestParam(name = "price") BigDecimal price) {
+        List<Product> productList = productService.findByPriceLessThanEqual(price);
+        return ResponseEntity.ok(ProductDTO.map(productList));
+    }
 }
+
