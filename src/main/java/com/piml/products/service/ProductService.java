@@ -1,5 +1,6 @@
 package com.piml.products.service;
 
+import com.piml.products.dto.ProductDTO;
 import com.piml.products.entity.Product;
 import com.piml.products.interfaces.CategoryENUM;
 import com.piml.products.repository.ProductRepository;
